@@ -17,27 +17,34 @@
             --bg: #ffffff; 
             --text-main: #111111; 
             --text-sub: #555555; 
-            --accent: #4b5320; /* Subtle Military Olive */
+            --accent: #4b5320; 
             --border: #e5e5e5; 
             --btn-bg: #111111;
             --btn-text: #ffffff;
+            --input-bg: transparent;
         }
 
         body.dark-mode {
             --bg: #000000; 
             --text-main: #ffffff; 
-            --text-sub: #a0a0a0;  
-            --accent: #8b9467; /* Lighter Tactical Olive */
-            --border: #222222;
+            --text-sub: #b0b0b0; /* Lightened for better contrast */
+            --accent: #9ba673; 
+            --border: #333333;
             --btn-bg: #ffffff;
             --btn-text: #000000;
+            --input-bg: #111111; /* Darker background for form fields */
         }
         
         body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; transition: 0.3s; }
-        .mono { font-family: 'Space Mono', monospace; font-size: 0.8rem; letter-spacing: 0.05em; }
+        .mono { font-family: 'Space Mono', monospace; font-size: 0.85rem; letter-spacing: 0.05em; }
         
         .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
         
+        /* 1. Corrected Nav Alignment */
+        .nav-brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.5rem; }
+        .nav-brand span { font-size: 1.5rem; line-height: 1; }
+        .nav-brand .military-id { color: var(--accent); font-family: 'Space Mono', monospace; font-weight: 400; }
+
         h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.03em; }
         h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
         .sub-header { font-size: 1.5rem; font-weight: 400; min-height: 1.8em; color: var(--accent); }
@@ -48,15 +55,14 @@
         .social-link { font-size: 1.8rem; color: var(--text-main); margin-left: 20px; text-decoration: none; transition: 0.2s; }
         .social-link:hover { color: var(--accent); }
         
-        /* Tactical Crosshair Toggle */
         #theme-toggle { cursor: pointer; font-size: 1.5rem; border: none; background: transparent; color: var(--text-main); transition: transform 0.5s ease; }
         #theme-toggle:hover { transform: rotate(90deg); color: var(--accent); }
         
         section { padding: 4rem 0; }
-        .experience-item { margin-bottom: 2.5rem; }
-        .exp-meta { color: var(--text-sub); font-size: 0.8rem; font-family: 'Space Mono', monospace; font-weight: 600; text-transform: uppercase; }
+        /* 2. & 3. Improved Readability for sub-labels */
+        .text-secondary-custom { color: var(--text-sub); }
+        .exp-meta { color: var(--text-sub); font-size: 0.85rem; font-family: 'Space Mono', monospace; font-weight: 600; text-transform: uppercase; }
         
-        /* HUD-inspired Project Cards */
         .project-card { border: 1px solid var(--border); padding: 1.5rem; transition: 0.3s; height: 100%; position: relative; }
         .project-card:hover { border-color: var(--accent); }
         .project-card::before {
@@ -65,12 +71,14 @@
         }
         .project-card:hover::before { opacity: 1; }
 
-        .tag { font-family: 'Space Mono', monospace; font-size: 0.7rem; padding: 2px 8px; border: 1px solid var(--border); margin-right: 5px; color: var(--text-sub); }
+        .tag { font-family: 'Space Mono', monospace; font-size: 0.75rem; padding: 2px 8px; border: 1px solid var(--border); margin-right: 5px; color: var(--text-sub); }
         
         .course-tag { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 5px 12px; margin: 4px; font-size: 0.9rem; color: var(--text-sub); }
 
-        .form-control { background: transparent; border: 1px solid var(--border); color: var(--text-main); border-radius: 0; padding: 12px; }
-        .form-control:focus { border-color: var(--accent); box-shadow: none; background: transparent; color: var(--text-main); }
+        /* Form Visibility Fix */
+        .form-control { background: var(--input-bg); border: 1px solid var(--border); color: var(--text-main); border-radius: 0; padding: 12px; transition: 0.3s; }
+        .form-control:focus { border-color: var(--accent); box-shadow: none; background: var(--input-bg); color: var(--text-main); }
+        .form-control::placeholder { color: var(--text-sub); opacity: 0.7; }
         
         footer { padding: 4rem 0; border-top: 1px solid var(--border); color: var(--text-sub); font-size: 0.9rem; }
     </style>
@@ -78,7 +86,10 @@
 <body>
 
     <nav class="container d-flex justify-content-between align-items-center py-4">
-        <span class="fw-bold fs-4">RRG <span class="mono" style="color:var(--accent); font-size: 0.6em; vertical-align: middle;">// 15U</span></span>
+        <div class="nav-brand">
+            <span>RRG</span>
+            <span class="military-id">// 15U</span>
+        </div>
         <button id="theme-toggle" onclick="toggleDarkMode()"><i class="fas fa-crosshairs"></i></button>
     </nav>
 
@@ -86,25 +97,29 @@
         <header data-aos="fade-up">
             <h1>Rik Raj Giri</h1>
             <div class="sub-header mb-3"><span id="typewriter" style="font-weight: 600;"></span></div>
-            <p class="text-secondary mb-4" style="max-width: 800px; font-size: 1.1rem;">
+            <p class="text-secondary-custom mb-4" style="max-width: 800px; font-size: 1.1rem;">
                 Aerospace Engineering student at SJSU and U.S. National Guard Chinook Helicopter Repairer (15U). I leverage hands-on CH-47 maintenance expertise alongside computational design skills in SolidWorks and MATLAB to solve complex aerospace challenges.
             </p>
             <div class="d-flex align-items-center">
                 <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn-resume">DOWNLOAD RESUME</a>
-                <a href="https://www.linkedin.com/in/rik-giri-347a83279/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/rikrajgiri" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/rik-giri-347a83279/" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/rikrajgiri" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
             </div>
         </header>
 
         <section data-aos="fade-up">
             <h2>Experience</h2>
             <div class="experience-item">
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
                     <h4 class="fw-bold mb-0">CH-47 Chinook Helicopter Repairer (15U)</h4>
                     <span class="exp-meta">Oct 2021 — Present</span>
                 </div>
                 <p class="small fw-bold mb-2 mono" style="color: var(--accent);">U.S. National Guard</p>
-                <ul class="text-secondary">
+                <ul class="text-secondary-custom">
                     <li>Perform high-level maintenance and structural repairs on CH-47 aircraft.</li>
                     <li>Ensure flight safety through rigorous inspection of power plants and powertrain systems.</li>
                     <li>Collaborate in high-stakes environments to maintain operational readiness of multi-million dollar assets.</li>
@@ -112,12 +127,12 @@
             </div>
             
             <div class="experience-item">
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
                     <h4 class="fw-bold mb-0">Professional Drafter / Consultant</h4>
                     <span class="exp-meta">Sep 2020 — Aug 2021</span>
                 </div>
                 <p class="small fw-bold mb-2 mono" style="color: var(--accent);">Technical Services</p>
-                <ul class="text-secondary">
+                <ul class="text-secondary-custom">
                     <li>Developed detailed technical drawings and 3D models for various engineering applications.</li>
                     <li>Consulted on structural design requirements and material specifications.</li>
                 </ul>
@@ -131,7 +146,7 @@
                     <div class="project-card">
                         <span class="exp-meta">Club Project</span>
                         <h4 class="fw-bold mt-2">UAV Design & Integration</h4>
-                        <p class="text-secondary small">Collaborated on the structural design and flight controller tuning for a custom long-range drone platform.</p>
+                        <p class="text-secondary-custom small">Collaborated on the structural design and flight controller tuning for a custom long-range drone platform.</p>
                         <div><span class="tag">SolidWorks</span><span class="tag">Aerodynamics</span></div>
                     </div>
                 </div>
@@ -139,7 +154,7 @@
                     <div class="project-card">
                         <span class="exp-meta">Personal Project</span>
                         <h4 class="fw-bold mt-2">Airfoil Analysis Tool</h4>
-                        <p class="text-secondary small">Developed a MATLAB-based script to calculate lift-to-drag ratios for various NACA airfoils.</p>
+                        <p class="text-secondary-custom small">Developed a MATLAB-based script to calculate lift-to-drag ratios for various NACA airfoils.</p>
                         <div><span class="tag">MATLAB</span><span class="tag">CFD</span></div>
                     </div>
                 </div>
@@ -177,9 +192,9 @@
                     </form>
                 </div>
                 <div class="col-md-5 mt-4 mt-md-0">
-                    <p class="text-secondary">Feel free to reach out for internship opportunities, technical collaborations, or military-related inquiries.</p>
+                    <p class="text-secondary-custom">Feel free to reach out for internship opportunities, technical collaborations, or military-related inquiries.</p>
                     <p class="fw-bold mb-0 mono">Email</p>
-                    <p class="text-secondary">rikrajgiri@gmail.com</p>
+                    <p class="text-secondary-custom">rikrajgiri@gmail.com</p>
                 </div>
             </div>
         </section>
