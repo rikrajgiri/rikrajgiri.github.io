@@ -8,131 +8,152 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root {      
-            --bg: #ffffff;      
-            --text-main: #111111;      
-            --text-sub: #555555;      
-            --border: #e5e5e5;    
-            --btn-bg: #111111;
-            --btn-text: #ffffff;
-        }
-
-        body.dark-mode {
-            --bg: #000000; 
-            --text-main: #ffffff; 
-            --text-sub: #a0a0a0;  
-            --border: #333333;
-            --btn-bg: #ffffff;
-            --btn-text: #000000;
-        }
-
-        body {      
-            font-family: 'Space Grotesk', sans-serif;      
-            background: var(--bg);      
-            color: var(--text-main);      
-            line-height: 1.6;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+        :root { --bg: #ffffff; --text-main: #111111; --text-sub: #555555; --border: #e5e5e5; --btn-bg: #111111; --btn-text: #ffffff; }
+        body.dark-mode { --bg: #000000; --text-main: #ffffff; --text-sub: #a0a0a0; --border: #333333; --btn-bg: #ffffff; --btn-text: #000000; }
         
-        header { margin-top: 4rem; margin-bottom: 4rem; }
+        body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; transition: 0.3s; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+        
         h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.03em; }
-        .sub-header { font-size: 1.5rem; font-weight: 400; min-height: 1.6em; }
-        .summary-text { color: var(--text-sub); font-size: 1.1rem; max-width: 800px; }
-
-        #theme-toggle {
-            cursor: pointer;
-            font-size: 1.5rem;
-            border: none;
-            background: transparent;
-            color: var(--text-main);
-            transition: transform 0.3s ease;
-        }
-
-        .btn-resume { 
-            background-color: var(--btn-bg); 
-            color: var(--btn-text); 
-            border: none; 
-            padding: 12px 30px; 
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 4px;
-            transition: 0.2s;
-        }
-        .btn-resume:hover { opacity: 0.8; color: var(--btn-text); }
+        h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+        .sub-header { font-size: 1.5rem; font-weight: 400; min-height: 1.8em; }
         
-        .social-link { font-size: 1.8rem; color: var(--text-main); transition: 0.2s; margin-left: 20px; text-decoration: none; }
+        .btn-resume, .btn-submit { background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid var(--btn-bg); padding: 12px 30px; font-weight: 600; text-decoration: none; border-radius: 4px; display: inline-block; transition: 0.2s; }
+        .btn-resume:hover, .btn-submit:hover { opacity: 0.8; color: var(--btn-text); }
+        
+        .social-link { font-size: 1.8rem; color: var(--text-main); margin-left: 20px; text-decoration: none; transition: 0.2s; }
         .social-link:hover { opacity: 0.6; }
+        
+        #theme-toggle { cursor: pointer; font-size: 1.5rem; border: none; background: transparent; color: var(--text-main); }
+        
+        section { padding: 4rem 0; }
+        .experience-item { margin-bottom: 2.5rem; }
+        .exp-meta { color: var(--text-sub); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
+        
+        .project-card { border: 1px solid var(--border); padding: 1.5rem; transition: 0.3s; height: 100%; }
+        .project-card:hover { border-color: var(--text-main); }
+        .tag { font-size: 0.75rem; padding: 2px 8px; border: 1px solid var(--border); margin-right: 5px; color: var(--text-sub); }
+        
+        .course-tag { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 5px 12px; margin: 4px; font-size: 0.9rem; color: var(--text-sub); }
 
-        footer { 
-            margin-top: 6rem; 
-            padding: 2rem 0 4rem; 
-            border-top: 1px solid var(--border); 
-            color: var(--text-sub); 
-            font-size: 0.9rem; 
-        }
-
-        .card-custom {
-            padding: 2rem;
-            border: 1px solid var(--border);
-            height: 100%;
-        }
+        /* Form Styling */
+        .form-control { background: transparent; border: 1px solid var(--border); color: var(--text-main); border-radius: 0; padding: 12px; }
+        .form-control:focus { background: transparent; color: var(--text-main); border-color: var(--text-sub); box-shadow: none; }
+        
+        footer { padding: 4rem 0; border-top: 1px solid var(--border); color: var(--text-sub); font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <nav class="container d-flex justify-content-between align-items-center py-4">
         <span class="fw-bold fs-4">RRG</span>
-        <button id="theme-toggle" onclick="toggleDarkMode()">
-            <i class="fas fa-moon"></i>
-        </button>
+        <button id="theme-toggle" onclick="toggleDarkMode()"><i class="fas fa-moon"></i></button>
     </nav>
 
     <div class="container">
         <header data-aos="fade-up">
             <h1>Rik Raj Giri</h1>
-            <div class="sub-header mb-3">
-                <span id="typewriter" style="font-weight: 600;"></span>
-            </div>
-            
-            <p class="summary-text">
-                <strong>Aerospace Engineering student and U.S. Army National Guard Chinook Helicopter Repairer (15U)</strong> with a focus on full-aircraft systems integration. I combine professional drafting experience and hands-on CH-47 maintenance with proficiency in <strong>SolidWorks, MATLAB, and Python</strong>. Proven leader with experience managing high-value operations and complex technical consultations.
+            <div class="sub-header mb-3"><span id="typewriter" style="font-weight: 600;"></span></div>
+            <p class="text-secondary mb-4" style="max-width: 800px; font-size: 1.1rem;">
+                Aerospace Engineering student at SJSU and U.S. National Guard Chinook Helicopter Repairer (15U). I leverage hands-on CH-47 maintenance expertise alongside computational design skills in SolidWorks and MATLAB to solve complex aerospace challenges.
             </p>
-            
-            <div class="mt-5 d-flex align-items-center">
-                <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn-resume">
-                    DOWNLOAD RESUME
-                </a>
-                
-                <a href="https://www.linkedin.com/in/rik-giri-347a83279/" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                
-                <a href="https://github.com/rikrajgiri" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i>
-                </a>
+            <div class="d-flex align-items-center">
+                <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn-resume">DOWNLOAD RESUME</a>
+                <a href="https://www.linkedin.com/in/rik-giri-347a83279/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/rikrajgiri" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
             </div>
         </header>
 
-        <section class="row g-4" data-aos="fade-up">
-            <div class="col-md-6">
-                <div class="card-custom">
-                    <h5 class="fw-bold">Military Leadership</h5>
-                    <p class="summary-text" style="font-size: 0.95rem;">CH-47 Maintenance & High-Value Asset Management. Veteran leader focused on operational excellence.</p>
+        <section data-aos="fade-up">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <div class="d-flex justify-content-between">
+                    <h4 class="fw-bold mb-0">CH-47 Chinook Helicopter Repairer (15U)</h4>
+                    <span class="exp-meta">Oct 2021 — Present</span>
+                </div>
+                <p class="text-uppercase small fw-bold mb-2">U.S. National Guard</p>
+                <ul class="text-secondary">
+                    <li>Perform high-level maintenance and structural repairs on CH-47 aircraft.</li>
+                    <li>Ensure flight safety through rigorous inspection of power plants and powertrain systems.</li>
+                    <li>Collaborate in high-stakes environments to maintain operational readiness of multi-million dollar assets.</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="d-flex justify-content-between">
+                    <h4 class="fw-bold mb-0">Professional Drafter / Consultant</h4>
+                    <span class="exp-meta">Sep 2020 — Aug 2021</span>
+                </div>
+                <p class="text-uppercase small fw-bold mb-2">Technical Services</p>
+                <ul class="text-secondary">
+                    <li>Developed detailed technical drawings and 3D models for various engineering applications.</li>
+                    <li>Consulted on structural design requirements and material specifications.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section data-aos="fade-up">
+            <h2>Projects</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="project-card">
+                        <span class="exp-meta">Club Project</span>
+                        <h4 class="fw-bold mt-2">UAV Design & Integration</h4>
+                        <p class="text-secondary small">Collaborated on the structural design and flight controller tuning for a custom long-range drone platform.</p>
+                        <div><span class="tag">SolidWorks</span><span class="tag">Aerodynamics</span></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="project-card">
+                        <span class="exp-meta">Personal Project</span>
+                        <h4 class="fw-bold mt-2">Airfoil Analysis Tool</h4>
+                        <p class="text-secondary small">Developed a MATLAB-based script to calculate lift-to-drag ratios for various NACA airfoils.</p>
+                        <div><span class="tag">MATLAB</span><span class="tag">CFD</span></div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card-custom">
-                    <h5 class="fw-bold">Technical Design</h5>
-                    <p class="summary-text" style="font-size: 0.95rem;">Proficient in Aerodynamics and Structural Analysis using SolidWorks, MATLAB, and Python.</p>
+        </section>
+
+        <section data-aos="fade-up">
+            <h2>Relevant Coursework</h2>
+            <div class="d-flex flex-wrap">
+                <span class="course-tag">Orbital Mechanics</span>
+                <span class="course-tag">Aerodynamics</span>
+                <span class="course-tag">Thermodynamics</span>
+                <span class="course-tag">Flight Dynamics</span>
+                <span class="course-tag">Solid Mechanics</span>
+                <span class="course-tag">Propulsion Systems</span>
+                <span class="course-tag">Calculus III & Differential Equations</span>
+                <span class="course-tag">Computational Fluid Dynamics</span>
+            </div>
+        </section>
+
+        <section data-aos="fade-up">
+            <h2>Contact Me</h2>
+            <div class="row">
+                <div class="col-md-7">
+                    <form action="https://formspree.io/f/rikrajgiri@gmail.com" method="POST">
+                        <div class="mb-3">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" name="_replyto" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">SEND MESSAGE</button>
+                    </form>
+                </div>
+                <div class="col-md-5 mt-4 mt-md-0">
+                    <p class="text-secondary">Feel free to reach out for internship opportunities, technical collaborations, or military-related inquiries.</p>
+                    <p class="fw-bold mb-0">Email</p>
+                    <p class="text-secondary">rikrajgiri@gmail.com</p>
                 </div>
             </div>
         </section>
@@ -145,33 +166,27 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script>
-        // Animations
         AOS.init({ duration: 800, once: true });
-
-        // Updated Typewriter with requested titles
+        
         new Typewriter('#typewriter', {
             strings: [
                 'SJSU Aerospace Engineering Student', 
-                'U.S. Army National Guard: Chinook Helicopter Repairer'
+                'U.S. National Guard: Chinook Helicopter Repairer'
             ],
-            autoStart: true,
-            loop: true,
+            autoStart: true, 
+            loop: true, 
             delay: 50,
             deleteSpeed: 30
         });
 
-        // Dark Mode Toggle
         function toggleDarkMode() {
             const body = document.body;
             const icon = document.querySelector('#theme-toggle i');
             body.classList.toggle('dark-mode');
-            
             if (body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+                icon.classList.replace('fa-moon', 'fa-sun');
             } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+                icon.classList.replace('fa-sun', 'fa-moon');
             }
         }
     </script>
