@@ -44,15 +44,16 @@
         .sub-header { font-size: 1.5rem; font-weight: 400; color: var(--text-main); }
         .summary-text { color: var(--text-sub); font-size: 1.1rem; max-width: 800px; }
 
+        /* Icon Toggle Styling */
         #theme-toggle {
             cursor: pointer;
-            padding: 5px 15px;
-            border-radius: 5px;
-            border: 1px solid var(--text-main);
+            font-size: 1.5rem;
+            border: none;
             background: transparent;
             color: var(--text-main);
-            font-weight: bold;
+            transition: transform 0.3s ease;
         }
+        #theme-toggle:hover { transform: scale(1.1); }
 
         .btn-resume { 
             background-color: var(--btn-bg); 
@@ -63,7 +64,9 @@
             text-decoration: none;
             display: inline-block;
             border-radius: 4px;
+            transition: 0.2s;
         }
+        .btn-resume:hover { opacity: 0.8; }
         
         .social-link { font-size: 1.8rem; color: var(--text-main); transition: 0.2s; margin-left: 20px; text-decoration: none; }
         .social-link:hover { opacity: 0.7; }
@@ -75,68 +78,6 @@
 
     <nav class="container d-flex justify-content-between align-items-center py-4">
         <span class="fw-bold fs-4">RRG</span>
-        <button id="theme-toggle" onclick="toggleDarkMode()">TOGGLE MODE</button>
-    </nav>
-
-    <div class="container">
-        <header data-aos="fade-up">
-            <h1>Rik Raj Giri</h1>
-            <div class="sub-header mb-3">
-                <span id="typewriter"></span>
-            </div>
-            
-            <p class="summary-text">
-                <strong>Aerospace Engineering student and U.S. Army National Guard Chinook Helicopter Repairer (15U)</strong> with a focus on full-aircraft systems integration. I combine professional drafting experience and hands-on CH-47 maintenance with proficiency in <strong>SolidWorks, MATLAB, and Python</strong>.
-            </p>
-            
-            <div class="mt-5 d-flex align-items-center">
-                <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn-resume">RESUME
-                </a>
-                
-                <a href="https://www.linkedin.com/in/rik-giri-347a83279/" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/rikrajgiri" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-        </header>
-
-        <section class="row g-4" data-aos="fade-up">
-            <div class="col-md-6">
-                <div class="p-4 border">
-                    <h5 class="fw-bold">Military Leadership</h5>
-                    <p class="summary-text" style="font-size: 0.95rem;">CH-47 Maintenance & High-Value Asset Management</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="p-4 border">
-                    <h5 class="fw-bold">Technical Design</h5>
-                    <p class="summary-text" style="font-size: 0.95rem;">Aerodynamics, SolidWorks CAD, & Systems Integration</p>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            © 2025 Rik Raj Giri · Bridging Hands-On Maintenance with Aerospace Innovation
-        </footer>
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
-    <script>
-        AOS.init({ duration: 800, once: true });
-
-        new Typewriter('#typewriter', {
-            strings: ['Aerospace Engineering Student', 'Army National Guard: Chinook Helicopter Repairer (15U)'],
-            autoStart: true,
-            loop: true,
-            delay: 75
-        });
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-    </script>
-</body>
-</html>
+        <button id="theme-toggle" onclick="toggleDarkMode()">
+            <i class="fas fa-moon"></i>
+        </
