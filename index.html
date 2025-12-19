@@ -80,4 +80,83 @@
         <span class="fw-bold fs-4">RRG</span>
         <button id="theme-toggle" onclick="toggleDarkMode()">
             <i class="fas fa-moon"></i>
-        </
+        </button>
+    </nav>
+
+    <div class="container">
+        <header data-aos="fade-up">
+            <h1>Rik Raj Giri</h1>
+            <div class="sub-header mb-3">
+                <span id="typewriter"></span>
+            </div>
+            
+            <p class="summary-text">
+                <strong>Aerospace Engineering student and U.S. Army National Guard Chinook Helicopter Repairer (15U)</strong> with a focus on full-aircraft systems integration. I combine professional drafting experience and hands-on CH-47 maintenance with proficiency in <strong>SolidWorks, MATLAB, and Python</strong>. Proven leader with experience managing high-value operations and complex technical consultations.
+            </p>
+            
+            <div class="mt-5 d-flex align-items-center">
+                <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn-resume">
+                    DOWNLOAD RESUME
+                </a>
+                
+                <a href="https://www.linkedin.com/in/rik-giri-347a83279/" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/rikrajgiri" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </header>
+
+        <section class="row g-4" data-aos="fade-up">
+            <div class="col-md-6">
+                <div class="p-4 border">
+                    <h5 class="fw-bold">Military Leadership</h5>
+                    <p class="summary-text" style="font-size: 0.95rem;">CH-47 Maintenance & High-Value Asset Management</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-4 border">
+                    <h5 class="fw-bold">Technical Design</h5>
+                    <p class="summary-text" style="font-size: 0.95rem;">Aerodynamics, SolidWorks CAD, & Systems Integration</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            © 2025 Rik Raj Giri · Built for engineering internships and aerospace roles
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script>
+        // Initialize Scroll Animations
+        AOS.init({ duration: 800, once: true });
+
+        // Initialize Typewriter
+        new Typewriter('#typewriter', {
+            strings: ['Aerospace Engineering', 'Chinook Systems Repairer', 'Computational Design'],
+            autoStart: true,
+            loop: true,
+            delay: 75
+        });
+
+        // Toggle Function for Dark Mode Icons
+        function toggleDarkMode() {
+            const body = document.body;
+            const icon = document.querySelector('#theme-toggle i');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    </script>
+</body>
+</html>
