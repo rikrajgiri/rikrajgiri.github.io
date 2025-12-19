@@ -14,16 +14,16 @@
             --bg: #ffffff;      
             --text: #111111;      
             --muted: #555555;      
-            --accent: #0b5ed7; /* Aerospace Blue */      
+            --accent: #0b5ed7; 
             --border: #e5e5e5;    
         }
 
-        /* Dark Mode variables */
+        /* Dark Mode: Charcoal and Light Grey */
         body.dark-mode {
-            --bg: #0f172a; /* Deep Space Blue */
-            --text: #f8fafc;
-            --muted: #94a3b8;
-            --border: #1e293b;
+            --bg: #2d2d2d; /* Light Charcoal */
+            --text: #e0e0e0; /* Light Grey */
+            --muted: #a0a0a0;
+            --border: #444444;
         }
 
         body {      
@@ -31,7 +31,7 @@
             background: var(--bg);      
             color: var(--text);      
             line-height: 1.6;
-            transition: background 0.4s ease, color 0.4s ease;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .container {      
@@ -40,43 +40,33 @@
             padding: 2rem 1.5rem;    
         }
 
-        header {      
-            margin-top: 4rem;
-            margin-bottom: 4rem;    
-        }
-
-        header h1 {      
-            font-size: 3rem;      
-            font-weight: 700;      
-            margin-bottom: 0.5rem;    
-        }
-
-        .accent-text { color: var(--accent); }
+        header { margin-top: 4rem; margin-bottom: 4rem; }
+        header h1 { font-size: 3rem; font-weight: 700; }
+        .accent-text { color: var(--accent); font-weight: 500; }
         
-        /* Dark mode toggle button style */
         #theme-toggle {
             cursor: pointer;
-            padding: 10px;
-            border-radius: 50%;
+            padding: 8px 15px;
+            border-radius: 20px;
             border: 1px solid var(--border);
             background: transparent;
             color: var(--text);
-            transition: 0.3s;
+            font-size: 0.9rem;
         }
 
-        #theme-toggle:hover { background: var(--accent); color: white; }
+        #theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
-        .btn-primary { background-color: var(--accent); border: none; padding: 12px 30px; border-radius: 8px; }
-        
-        section { margin-bottom: 5rem; }
+        .btn-primary { background-color: var(--accent); border: none; padding: 12px 25px; }
+        .social-link { font-size: 1.5rem; color: var(--text); transition: 0.3s; margin-right: 15px; }
+        .social-link:hover { color: var(--accent); }
     </style>
 </head>
 <body>
 
     <nav class="container d-flex justify-content-between align-items-center py-4">
-        <span class="fw-bold tracking-tight">RG</span>
+        <span class="fw-bold">RG</span>
         <button id="theme-toggle" onclick="toggleDarkMode()">
-            <i class="fas fa-moon"></i>
+            <i class="fas fa-moon me-2"></i>Mode
         </button>
     </nav>
 
@@ -87,37 +77,43 @@
                 <span id="typewriter" class="accent-text"></span>
             </h3>
             <p class="text-secondary mt-3" style="max-width: 600px;">
-                Aspiring Aerospace Engineer dedicated to exploring the intersection of aerodynamics and sustainable flight technologies.
+                Aerospace Engineering Student | .
             </p>
-            <div class="mt-4">
-                <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn btn-primary shadow-sm me-3">
-                    <i class="fas fa-file-download me-2"></i> Resume
+            
+            <div class="mt-4 d-flex align-items-center">
+                <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn btn-primary shadow-sm me-4">
+                    <i class="fas fa-file-download me-2"></i>Resume
                 </a>
-                <a href="https://github.com/your-username" class="btn btn-outline-secondary">
+                
+                <a href="https://www.linkedin.com/in/rik-giri-347a83279/" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                
+                <a href="https://github.com/rikrajgiri" target="_blank" class="social-link">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
         </header>
 
         <section data-aos="fade-up">
-            <h2 class="h4 border-bottom pb-2 mb-4">Focus Areas</h2>
+            <h2 class="h5 border-bottom pb-2 mb-4">Core Competencies</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="p-3 border rounded shadow-sm">
-                        <i class="fas fa-rocket mb-2 accent-text"></i>
-                        <h5>Aerodynamics</h5>
+                    <div class="p-4 border rounded shadow-sm">
+                        <i class="fas fa-plane-engines mb-3 accent-text fs-4"></i>
+                        <h6>Propulsion</h6>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="p-3 border rounded shadow-sm">
-                        <i class="fas fa-satellite mb-2 accent-text"></i>
-                        <h5>Space Systems</h5>
+                    <div class="p-4 border rounded shadow-sm">
+                        <i class="fas fa-drafting-pencil mb-3 accent-text fs-4"></i>
+                        <h6>CAD / SolidWorks</h6>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="p-3 border rounded shadow-sm">
-                        <i class="fas fa-microchip mb-2 accent-text"></i>
-                        <h5>CAD & Design</h5>
+                    <div class="p-4 border rounded shadow-sm">
+                        <i class="fas fa-terminal mb-3 accent-text fs-4"></i>
+                        <h6>MATLAB & Python</h6>
                     </div>
                 </div>
             </div>
@@ -127,26 +123,21 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script>
-        // Initialize Animations
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 800, once: true });
 
-        // Initialize Typewriter
-        const typewriter = document.getElementById('typewriter');
         new Typewriter('#typewriter', {
-            strings: ['Aerospace Engineering', 'Drone Pilot', 'Computational Designer'],
+            strings: ['Aerospace Engineering Student', 'Army National Guard: Chinook Helicopter Repairer'],
             autoStart: true,
-            loop: true,
-            deleteSpeed: 50
+            loop: true
         });
 
-        // Dark Mode Function
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
-            const icon = document.querySelector('#theme-toggle i');
+            const btn = document.querySelector('#theme-toggle');
             if(document.body.classList.contains('dark-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
+                btn.innerHTML = '<i class="fas fa-sun me-2"></i>Light';
             } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
+                btn.innerHTML = '<i class="fas fa-moon me-2"></i>Dark';
             }
         }
     </script>
