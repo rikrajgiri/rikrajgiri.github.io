@@ -1,179 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rik Raj Giri | Aerospace Engineering</title>
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #111111;
-      --muted: #555555;
-      --accent: #0b5ed7; /* aerospace blue */
-      --border: #e5e5e5;
-    }
+<head>  
+    <meta charset="UTF-8" />  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+    <title>Rik Raj Giri | Aerospace Engineering</title>  
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <style>
+        :root {      
+            --bg: #ffffff;      
+            --text: #111111;      
+            --muted: #555555;      
+            --accent: #0b5ed7; /* Aerospace Blue */      
+            --border: #e5e5e5;    
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+        /* Dark Mode variables */
+        body.dark-mode {
+            --bg: #0f172a; /* Deep Space Blue */
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --border: #1e293b;
+        }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
+        body {      
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;      
+            background: var(--bg);      
+            color: var(--text);      
+            line-height: 1.6;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
 
-    header {
-      margin-bottom: 4rem;
-    }
+        .container {      
+            max-width: 900px;      
+            margin: 0 auto;      
+            padding: 2rem 1.5rem;    
+        }
 
-    header h1 {
-      font-size: 2.6rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
+        header {      
+            margin-top: 4rem;
+            margin-bottom: 4rem;    
+        }
 
-    header h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-    }
+        header h1 {      
+            font-size: 3rem;      
+            font-weight: 700;      
+            margin-bottom: 0.5rem;    
+        }
 
-    .links a {
-      margin-right: 1.2rem;
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: 500;
-    }
+        .accent-text { color: var(--accent); }
+        
+        /* Dark mode toggle button style */
+        #theme-toggle {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            transition: 0.3s;
+        }
 
-    section {
-      margin-bottom: 4rem;
-    }
+        #theme-toggle:hover { background: var(--accent); color: white; }
 
-    section h3 {
-      font-size: 1.6rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-      padding-bottom: 0.3rem;
-    }
-
-    .project-placeholder {
-      border: 2px dashed var(--border);
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-radius: 6px;
-      color: var(--muted);
-    }
-
-    .resume-section h4 {
-      font-size: 1.1rem;
-      margin-top: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul li {
-      margin-bottom: 0.4rem;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding-top: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-    }
-  </style>
+        .btn-primary { background-color: var(--accent); border: none; padding: 12px 30px; border-radius: 8px; }
+        
+        section { margin-bottom: 5rem; }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Rik Raj Giri</h1>
-      <h2>Aerospace Engineering Student | San José State University</h2>
-      <div class="links">
-        <a href="Rik%20Giri%20-%20AE%20Resume.pdf" target="_blank">Resume</a>
-        <a href="https://www.linkedin.com/in/rik-giri-347a83279/">LinkedIn</a>
-        <a href="https://github.com/rikrajgiri">GitHub</a>
-      </div>
-    </header>
 
-    <section id="projects">
-      <h3>Projects</h3>
+    <nav class="container d-flex justify-content-between align-items-center py-4">
+        <span class="fw-bold tracking-tight">RG</span>
+        <button id="theme-toggle" onclick="toggleDarkMode()">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
 
-      <div class="project-placeholder">
-        <strong>Future Project Title</strong>
-        <p>
-          Brief technical description of the project. Include the problem, your role,
-          tools used, and results. (e.g., MATLAB analysis, SolidWorks modeling, testing)
-        </p>
-      </div>
+    <div class="container">
+        <header data-aos="fade-down">
+            <h1>Rik Raj Giri</h1>
+            <h3 class="fw-light">
+                <span id="typewriter" class="accent-text"></span>
+            </h3>
+            <p class="text-secondary mt-3" style="max-width: 600px;">
+                Aspiring Aerospace Engineer dedicated to exploring the intersection of aerodynamics and sustainable flight technologies.
+            </p>
+            <div class="mt-4">
+                <a href="resume.pdf" class="btn btn-primary shadow-sm me-3">
+                    <i class="fas fa-file-download me-2"></i>Download Resume
+                </a>
+                <a href="https://github.com/your-username" class="btn btn-outline-secondary">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </header>
 
-      <div class="project-placeholder">
-        <strong>Future Project Title</strong>
-        <p>
-          This space is intentionally left editable so you can easily add coursework,
-          research, or personal engineering projects as you gain experience.
-        </p>
-      </div>
-    </section>
+        <section data-aos="fade-up">
+            <h2 class="h4 border-bottom pb-2 mb-4">Focus Areas</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="p-3 border rounded shadow-sm">
+                        <i class="fas fa-rocket mb-2 accent-text"></i>
+                        <h5>Aerodynamics</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 border rounded shadow-sm">
+                        <i class="fas fa-satellite mb-2 accent-text"></i>
+                        <h5>Space Systems</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 border rounded shadow-sm">
+                        <i class="fas fa-microchip mb-2 accent-text"></i>
+                        <h5>CAD & Design</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
-    <section id="resume" class="resume-section">
-      <h3>Resume</h3>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({ duration: 1000, once: true });
 
-      <h4>Education</h4>
-      <ul>
-        <li><strong>B.S. Aerospace Engineering</strong>, San José State University</li>
-        <li>Expected Graduation: 2027</li>
-        <li>Relevant Coursework: Calculus III, Differential Equations, Statics, Dynamics</li>
-      </ul>
+        // Initialize Typewriter
+        const typewriter = document.getElementById('typewriter');
+        new Typewriter('#typewriter', {
+            strings: ['Aerospace Engineering', 'Drone Pilot', 'Computational Designer'],
+            autoStart: true,
+            loop: true,
+            deleteSpeed: 50
+        });
 
-      <h4>Technical Skills</h4>
-      <ul>
-        <li>Programming: MATLAB, Python, C++</li>
-        <li>Engineering: Engineering analysis, problem solving, technical documentation</li>
-        <li>Tools: (Add CAD / simulation tools as you learn them)</li>
-      </ul>
-
-      <h4>Experience</h4>
-      <ul>
-        <li>Engineering experience and internships to be added</li>
-      </ul>
-    </section>
-
-    <section id="about">
-      <h3>About</h3>
-      <p>
-        I am an Aerospace Engineering student at San José State University with a strong
-        foundation in mathematics and physics. I am interested in applying analytical
-        and computational methods to real-world aerospace problems and am actively
-        seeking engineering internships and early-career opportunities.
-      </p>
-    </section>
-
-    <footer>
-      <p>© 2025 Rik Raj Giri</p>
-    </footer>
-  </div>
+        // Dark Mode Function
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('#theme-toggle i');
+            if(document.body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+    </script>
 </body>
 </html>
