@@ -12,112 +12,114 @@
     <style>
         :root {      
             --bg: #ffffff;      
-            --text: #111111;      
-            --muted: #555555;      
-            --accent: #0b5ed7; 
+            --text-main: #111111;      
+            --text-sub: #555555;      
             --border: #e5e5e5;    
+            --btn-bg: #111111;
+            --btn-text: #ffffff;
         }
 
-        /* Dark Mode: Charcoal and Light Grey */
+        /* Dark Mode: Pure Black Background */
         body.dark-mode {
-            --bg: #2d2d2d; /* Light Charcoal */
-            --text: #e0e0e0; /* Light Grey */
-            --muted: #a0a0a0;
-            --border: #444444;
+            --bg: #000000; 
+            --text-main: #ffffff; /* Bigger text white */
+            --text-sub: #a0a0a0;  /* Smaller texts light gray */
+            --border: #333333;
+            --btn-bg: #ffffff;
+            --btn-text: #000000;
         }
 
         body {      
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;      
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;      
             background: var(--bg);      
-            color: var(--text);      
+            color: var(--text-main);      
             line-height: 1.6;
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        .container {      
-            max-width: 900px;      
-            margin: 0 auto;      
-            padding: 2rem 1.5rem;    
-        }
-
-        header { margin-top: 4rem; margin-bottom: 4rem; }
-        header h1 { font-size: 3rem; font-weight: 700; }
-        .accent-text { color: var(--accent); font-weight: 500; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
         
+        header { margin-top: 4rem; margin-bottom: 4rem; }
+        h1 { font-size: 3.5rem; font-weight: 800; color: var(--text-main); }
+        .sub-header { font-size: 1.5rem; font-weight: 400; color: var(--text-main); }
+        .summary-text { color: var(--text-sub); font-size: 1.1rem; max-width: 800px; }
+
         #theme-toggle {
             cursor: pointer;
-            padding: 8px 15px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: 1px solid var(--text-main);
             background: transparent;
-            color: var(--text);
-            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: bold;
         }
 
-        #theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-resume { 
+            background-color: var(--btn-bg); 
+            color: var(--btn-text); 
+            border: none; 
+            padding: 12px 30px; 
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 4px;
+        }
+        
+        .social-link { font-size: 1.8rem; color: var(--text-main); transition: 0.2s; margin-left: 20px; text-decoration: none; }
+        .social-link:hover { opacity: 0.7; }
 
-        .btn-primary { background-color: var(--accent); border: none; padding: 12px 25px; }
-        .social-link { font-size: 1.5rem; color: var(--text); transition: 0.3s; margin-right: 15px; }
-        .social-link:hover { color: var(--accent); }
+        footer { margin-top: 5rem; padding-bottom: 3rem; border-top: 1px solid var(--border); padding-top: 2rem; color: var(--text-sub); font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <nav class="container d-flex justify-content-between align-items-center py-4">
-        <span class="fw-bold">RG</span>
-        <button id="theme-toggle" onclick="toggleDarkMode()">
-            <i class="fas fa-moon me-2"></i>Mode
-        </button>
+        <span class="fw-bold fs-4">RRG</span>
+        <button id="theme-toggle" onclick="toggleDarkMode()">TOGGLE MODE</button>
     </nav>
 
     <div class="container">
-        <header data-aos="fade-down">
+        <header data-aos="fade-up">
             <h1>Rik Raj Giri</h1>
-            <h3 class="fw-light">
-                <span id="typewriter" class="accent-text"></span>
-            </h3>
-            <p class="text-secondary mt-3" style="max-width: 600px;">
-                Aerospace Engineering Student | .
+            <div class="sub-header mb-3">
+                <span id="typewriter"></span>
+            </div>
+            
+            <p class="summary-text">
+                <strong>Aerospace Engineering student and U.S. Army National Guard Chinook Helicopter Repairer (15U)</strong> with a focus on full-aircraft systems integration. I combine professional drafting experience and hands-on CH-47 maintenance with proficiency in <strong>SolidWorks, MATLAB, and Python</strong>.
             </p>
             
-            <div class="mt-4 d-flex align-items-center">
-                <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn btn-primary shadow-sm me-4">
-                    <i class="fas fa-file-download me-2"></i>Resume
+            <div class="mt-5 d-flex align-items-center">
+                <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn-resume">RESUME
                 </a>
                 
                 <a href="https://www.linkedin.com/in/rik-giri-347a83279/" target="_blank" class="social-link">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                
                 <a href="https://github.com/rikrajgiri" target="_blank" class="social-link">
                     <i class="fab fa-github"></i>
                 </a>
             </div>
         </header>
 
-        <section data-aos="fade-up">
-            <h2 class="h5 border-bottom pb-2 mb-4">Core Competencies</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="p-4 border rounded shadow-sm">
-                        <i class="fas fa-plane-engines mb-3 accent-text fs-4"></i>
-                        <h6>Propulsion</h6>
-                    </div>
+        <section class="row g-4" data-aos="fade-up">
+            <div class="col-md-6">
+                <div class="p-4 border">
+                    <h5 class="fw-bold">Military Leadership</h5>
+                    <p class="summary-text" style="font-size: 0.95rem;">CH-47 Maintenance & High-Value Asset Management</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="p-4 border rounded shadow-sm">
-                        <i class="fas fa-drafting-pencil mb-3 accent-text fs-4"></i>
-                        <h6>CAD / SolidWorks</h6>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 border rounded shadow-sm">
-                        <i class="fas fa-terminal mb-3 accent-text fs-4"></i>
-                        <h6>MATLAB & Python</h6>
-                    </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-4 border">
+                    <h5 class="fw-bold">Technical Design</h5>
+                    <p class="summary-text" style="font-size: 0.95rem;">Aerodynamics, SolidWorks CAD, & Systems Integration</p>
                 </div>
             </div>
         </section>
+
+        <footer>
+            © 2025 Rik Raj Giri · Bridging Hands-On Maintenance with Aerospace Innovation
+        </footer>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -126,19 +128,14 @@
         AOS.init({ duration: 800, once: true });
 
         new Typewriter('#typewriter', {
-            strings: ['Aerospace Engineering Student', 'Army National Guard: Chinook Helicopter Repairer'],
+            strings: ['Aerospace Engineering Student', 'Army National Guard: Chinook Helicopter Repairer (15U)'],
             autoStart: true,
-            loop: true
+            loop: true,
+            delay: 75
         });
 
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
-            const btn = document.querySelector('#theme-toggle');
-            if(document.body.classList.contains('dark-mode')) {
-                btn.innerHTML = '<i class="fas fa-sun me-2"></i>Light';
-            } else {
-                btn.innerHTML = '<i class="fas fa-moon me-2"></i>Dark';
-            }
         }
     </script>
 </body>
