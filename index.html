@@ -23,7 +23,7 @@
         h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
         .sub-header { font-size: 1.5rem; font-weight: 400; min-height: 1.8em; }
         
-        .btn-resume, .btn-submit { background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid var(--btn-bg); padding: 12px 30px; font-weight: 600; text-decoration: none; border-radius: 4px; display: inline-block; transition: 0.2s; }
+        .btn-resume, .btn-submit { background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid var(--btn-bg); padding: 12px 30px; font-weight: 600; text-decoration: none; border-radius: 4px; display: inline-block; transition: 0.2s; cursor: pointer; }
         .btn-resume:hover, .btn-submit:hover { opacity: 0.8; color: var(--btn-text); }
         
         .social-link { font-size: 1.8rem; color: var(--text-main); margin-left: 20px; text-decoration: none; transition: 0.2s; }
@@ -41,7 +41,6 @@
         
         .course-tag { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 5px 12px; margin: 4px; font-size: 0.9rem; color: var(--text-sub); }
 
-        /* Form Styling */
         .form-control { background: transparent; border: 1px solid var(--border); color: var(--text-main); border-radius: 0; padding: 12px; }
         .form-control:focus { background: transparent; color: var(--text-main); border-color: var(--text-sub); box-shadow: none; }
         
@@ -137,15 +136,18 @@
             <h2>Contact Me</h2>
             <div class="row">
                 <div class="col-md-7">
-                    <form action="https://formspree.io/f/rikrajgiri@gmail.com" method="POST">
+                    <form action="https://formspree.io/f/mnjajznd" method="POST">
                         <div class="mb-3">
                             <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" name="_replyto" class="form-control" placeholder="Your Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                         </div>
                         <div class="mb-3">
                             <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <div style="display:none;">
+                            <label>Do not fill this out if you are human: <input name="_gotcha"></label>
                         </div>
                         <button type="submit" class="btn-submit">SEND MESSAGE</button>
                     </form>
