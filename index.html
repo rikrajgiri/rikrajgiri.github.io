@@ -14,193 +14,175 @@
 
     <style>
         :root { 
-            --bg: #ffffff; 
-            --text-main: #111111; 
-            --text-sub: #555555; 
-            --accent: #4b5320; 
-            --border: #e5e5e5; 
-            --btn-bg: #111111;
-            --btn-text: #ffffff;
-            --input-bg: transparent;
+            --bg: #ffffff; --text-main: #111111; --text-sub: #555555; 
+            --accent: #4b5320; --border: #e5e5e5; --btn-bg: #111111;
+            --btn-text: #ffffff; --input-bg: transparent;
         }
 
         body.dark-mode {
-            --bg: #000000; 
-            --text-main: #ffffff; 
-            --text-sub: #b0b0b0; /* Lightened for better contrast */
-            --accent: #9ba673; 
-            --border: #333333;
-            --btn-bg: #ffffff;
-            --btn-text: #000000;
-            --input-bg: #111111; /* Darker background for form fields */
+            --bg: #0b0c0a; --text-main: #e0e0e0; --text-sub: #b0b0b0; 
+            --accent: #9ba673; --border: #22251e; --btn-bg: #ffffff;
+            --btn-text: #000000; --input-bg: #151712;
         }
         
         body { font-family: 'Space Grotesk', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; transition: 0.3s; }
-        .mono { font-family: 'Space Mono', monospace; font-size: 0.85rem; letter-spacing: 0.05em; }
+        .mono { font-family: 'Space Mono', monospace; font-size: 0.8rem; letter-spacing: 0.05em; }
         
+        /* Tactical Status Bar */
+        .status-bar { border-bottom: 1px solid var(--border); padding: 5px 0; font-size: 0.7rem; color: var(--accent); }
+
         .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
         
-        /* 1. Corrected Nav Alignment */
         .nav-brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.5rem; }
-        .nav-brand span { font-size: 1.5rem; line-height: 1; }
-        .nav-brand .military-id { color: var(--accent); font-family: 'Space Mono', monospace; font-weight: 400; }
+        .nav-brand .military-id { color: var(--accent); font-family: 'Space Mono', monospace; font-weight: 400; font-size: 1.2rem; }
 
         h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.03em; }
-        h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
-        .sub-header { font-size: 1.5rem; font-weight: 400; min-height: 1.8em; color: var(--accent); }
+        h2 { font-size: 1.2rem; font-weight: 700; font-family: 'Space Mono', monospace; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 5px; margin-bottom: 2rem; }
+        .sub-header { font-size: 1.5rem; font-weight: 400; min-height: 1.8em; color: var(--text-main); }
         
-        .btn-resume, .btn-submit { background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid var(--btn-bg); padding: 12px 30px; font-weight: 600; text-decoration: none; border-radius: 4px; display: inline-block; transition: 0.2s; cursor: pointer; }
-        .btn-resume:hover, .btn-submit:hover { opacity: 0.8; color: var(--btn-text); }
-        
-        .social-link { font-size: 1.8rem; color: var(--text-main); margin-left: 20px; text-decoration: none; transition: 0.2s; }
-        .social-link:hover { color: var(--accent); }
-        
-        #theme-toggle { cursor: pointer; font-size: 1.5rem; border: none; background: transparent; color: var(--text-main); transition: transform 0.5s ease; }
-        #theme-toggle:hover { transform: rotate(90deg); color: var(--accent); }
-        
-        section { padding: 4rem 0; }
-        /* 2. & 3. Improved Readability for sub-labels */
-        .text-secondary-custom { color: var(--text-sub); }
-        .exp-meta { color: var(--text-sub); font-size: 0.85rem; font-family: 'Space Mono', monospace; font-weight: 600; text-transform: uppercase; }
-        
-        .project-card { border: 1px solid var(--border); padding: 1.5rem; transition: 0.3s; height: 100%; position: relative; }
-        .project-card:hover { border-color: var(--accent); }
-        .project-card::before {
-            content: ''; position: absolute; top: -1px; left: -1px; width: 10px; height: 10px;
-            border-top: 2px solid var(--accent); border-left: 2px solid var(--accent); opacity: 0; transition: 0.3s;
+        /* HUD-Inspired Cards */
+        .project-card { border: 1px solid var(--border); padding: 1.5rem; transition: 0.3s; height: 100%; position: relative; background: var(--input-bg); }
+        .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .project-card::before, .project-card::after {
+            content: ''; position: absolute; width: 8px; height: 8px; border-color: var(--accent); border-style: solid; opacity: 0.5;
         }
-        .project-card:hover::before { opacity: 1; }
+        .project-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+        .project-card::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
 
-        .tag { font-family: 'Space Mono', monospace; font-size: 0.75rem; padding: 2px 8px; border: 1px solid var(--border); margin-right: 5px; color: var(--text-sub); }
-        
-        .course-tag { display: inline-block; background: transparent; border: 1px solid var(--border); padding: 5px 12px; margin: 4px; font-size: 0.9rem; color: var(--text-sub); }
+        /* Skill Bar Stylings */
+        .skill-label { font-size: 0.75rem; font-family: 'Space Mono', monospace; display: flex; justify-content: space-between; margin-bottom: 4px; }
+        .skill-bar-bg { background: var(--border); height: 4px; width: 100%; margin-bottom: 15px; }
+        .skill-bar-fill { background: var(--accent); height: 100%; }
 
-        /* Form Visibility Fix */
-        .form-control { background: var(--input-bg); border: 1px solid var(--border); color: var(--text-main); border-radius: 0; padding: 12px; transition: 0.3s; }
-        .form-control:focus { border-color: var(--accent); box-shadow: none; background: var(--input-bg); color: var(--text-main); }
-        .form-control::placeholder { color: var(--text-sub); opacity: 0.7; }
+        .btn-resume { background-color: var(--btn-bg); color: var(--btn-text); border: 1px solid var(--btn-bg); padding: 12px 30px; font-weight: 600; text-decoration: none; border-radius: 2px; display: inline-block; transition: 0.2s; font-family: 'Space Mono', monospace; font-size: 0.8rem; }
         
-        footer { padding: 4rem 0; border-top: 1px solid var(--border); color: var(--text-sub); font-size: 0.9rem; }
+        #theme-toggle { cursor: pointer; border: none; background: transparent; color: var(--text-main); font-size: 1.2rem; }
+        
+        .tag { font-family: 'Space Mono', monospace; font-size: 0.7rem; padding: 2px 8px; border: 1px solid var(--border); margin-right: 5px; color: var(--text-sub); text-transform: uppercase; }
+        
+        .form-control { background: var(--input-bg); border: 1px solid var(--border); color: var(--text-main); border-radius: 0; padding: 12px; }
+        
+        footer { padding: 4rem 0; border-top: 1px solid var(--border); color: var(--text-sub); font-size: 0.8rem; font-family: 'Space Mono', monospace; }
     </style>
 </head>
 <body>
 
-    <nav class="container d-flex justify-content-between align-items-center py-4">
-        <div class="nav-brand">
-            <span>RRG</span>
-            <span class="military-id">// 15U</span>
+    <div class="status-bar">
+        <div class="container d-flex justify-content-between mono">
+            <span>[ SYSTEM: OPERATIONAL ]</span>
+            <span>[ LOCATION: SAN JOSE, CA ]</span>
+            <span>[ AUTH: 15U_REPAIRER ]</span>
         </div>
+    </div>
+
+    <nav class="container d-flex justify-content-between align-items-center py-4">
+        <div class="nav-brand"><span>RRG</span><span class="military-id">// 15U</span></div>
         <button id="theme-toggle" onclick="toggleDarkMode()"><i class="fas fa-crosshairs"></i></button>
     </nav>
 
     <div class="container">
-        <header data-aos="fade-up">
-            <h1>Rik Raj Giri</h1>
+        <header data-aos="fade-up" class="mb-5">
+            <h1 class="mb-0">Rik Raj Giri</h1>
             <div class="sub-header mb-3"><span id="typewriter" style="font-weight: 600;"></span></div>
-            <p class="text-secondary-custom mb-4" style="max-width: 800px; font-size: 1.1rem;">
-                Aerospace Engineering student at SJSU and U.S. National Guard Chinook Helicopter Repairer (15U). I leverage hands-on CH-47 maintenance expertise alongside computational design skills in SolidWorks and MATLAB to solve complex aerospace challenges.
+            <p class="text-secondary-custom mb-4" style="max-width: 850px; font-size: 1.1rem; color: var(--text-sub);">
+                Aerospace Engineering student at SJSU and U.S. National Guard Chinook Helicopter Repairer (15U). Specialized in <strong>safety-critical systems</strong>, flight-worthiness inspections, and 3D computational modeling for advanced aerospace assets.
             </p>
             <div class="d-flex align-items-center">
-                <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn-resume">DOWNLOAD RESUME</a>
-                <a href="https://www.linkedin.com/in/rik-giri-347a83279/" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/rikrajgiri" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i>
-                </a>
+                <a href="Rik%20Giri%20-%20AE%20Resume.pdf" class="btn-resume">DOWNLOAD_TECHNICAL_CV</a>
+                <a href="https://www.linkedin.com/in/rik-giri-347a83279/" target="_blank" class="ms-4 text-decoration-none color-inherit"><i class="fab fa-linkedin fs-4"></i></a>
+                <a href="https://github.com/rikrajgiri" target="_blank" class="ms-3 text-decoration-none color-inherit"><i class="fab fa-github fs-4"></i></a>
             </div>
         </header>
 
-        <section data-aos="fade-up">
-            <h2>Experience</h2>
-            <div class="experience-item">
-                <div class="d-flex justify-content-between align-items-center flex-wrap">
-                    <h4 class="fw-bold mb-0">CH-47 Chinook Helicopter Repairer (15U)</h4>
-                    <span class="exp-meta">September 2025 — Present</span>
-                </div>
-                <p class="small fw-bold mb-2 mono" style="color: var(--accent);">U.S. National Guard</p>
-                <ul class="text-secondary-custom">
-                    <li>Perform high-level maintenance and structural repairs on CH-47 aircraft.</li>
-                    <li>Ensure flight safety through rigorous inspection of power plants and powertrain systems.</li>
-                    <li>Collaborate in high-stakes environments to maintain operational readiness of multi-million dollar assets.</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <div class="d-flex justify-content-between align-items-center flex-wrap">
-                    <h4 class="fw-bold mb-0">Professional Drafter / Consultant</h4>
-                    <span class="exp-meta">May 2021 — August 2021</span>
-                </div>
-                <p class="small fw-bold mb-2 mono" style="color: var(--accent);">Technical Services</p>
-                <ul class="text-secondary-custom">
-                    <li>Developed detailed technical drawings and 3D models for various engineering applications.</li>
-                    <li>Consulted on structural design requirements and material specifications.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section data-aos="fade-up">
-            <h2>Projects</h2>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="project-card">
-                        <span class="exp-meta">Club Project</span>
-                        <h4 class="fw-bold mt-2">UAV Design & Integration</h4>
-                        <p class="text-secondary-custom small">Collaborated on the structural design and flight controller tuning for a custom long-range drone platform.</p>
-                        <div><span class="tag">SolidWorks</span><span class="tag">Aerodynamics</span></div>
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <section class="pt-0" data-aos="fade-up">
+                    <h2>01 // EXPERIENCE</h2>
+                    <div class="experience-item mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="fw-bold mb-0">CH-47 Chinook Repairer</h5>
+                            <span class="mono" style="font-size:0.7rem;">2021 — PRESENT</span>
+                        </div>
+                        <p class="mono mb-2" style="color: var(--accent); font-size:0.75rem;">U.S. NATIONAL GUARD // 15U</p>
+                        <p class="text-sub small mb-0" style="color:var(--text-sub)">Maintenance of powertrain and structural systems for heavy-lift aircraft. Focused on flight-safety and mission readiness.</p>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="project-card">
-                        <span class="exp-meta">Personal Project</span>
-                        <h4 class="fw-bold mt-2">Airfoil Analysis Tool</h4>
-                        <p class="text-secondary-custom small">Developed a MATLAB-based script to calculate lift-to-drag ratios for various NACA airfoils.</p>
-                        <div><span class="tag">MATLAB</span><span class="tag">CFD</span></div>
+
+                    <div class="experience-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="fw-bold mb-0">Drafter & Consultant</h5>
+                            <span class="mono" style="font-size:0.7rem;">2020 — 2021</span>
+                        </div>
+                        <p class="mono mb-2" style="color: var(--accent); font-size:0.75rem;">TECHNICAL SERVICES</p>
+                        <p class="text-sub small mb-0" style="color:var(--text-sub)">Consulted on 3D modeling and technical documentation for engineering design projects.</p>
                     </div>
-                </div>
+                </section>
+
+                <section data-aos="fade-up">
+                    <h2>02 // PROJECTS</h2>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="project-card">
+                                <span class="mono" style="font-size:0.6rem; color:var(--accent)">[ CLUB ]</span>
+                                <h6 class="fw-bold mt-1">UAV Integration</h6>
+                                <p class="small mb-2" style="color:var(--text-sub)">Flight controller tuning and structural frame design.</p>
+                                <span class="tag">SolidWorks</span><span class="tag">Aero</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="project-card">
+                                <span class="mono" style="font-size:0.6rem; color:var(--accent)">[ PERSONAL ]</span>
+                                <h6 class="fw-bold mt-1">Airfoil Analysis</h6>
+                                <p class="small mb-2" style="color:var(--text-sub)">MATLAB script for NACA lift/drag coefficient calculations.</p>
+                                <span class="tag">MATLAB</span><span class="tag">CFD</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
+
+            <div class="col-lg-4">
+                <section class="pt-0" data-aos="fade-up">
+                    <h2>03 // TECH_SPECS</h2>
+                    <div class="mb-4">
+                        <div class="skill-label"><span>SOLIDWORKS</span><span>90%</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                        
+                        <div class="skill-label"><span>MATLAB</span><span>80%</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+                        
+                        <div class="skill-label"><span>PYTHON</span><span>65%</span></div>
+                        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 65%;"></div></div>
+                    </div>
+
+                    <h2>04 // COURSEWORK</h2>
+                    <div class="d-flex flex-wrap gap-1">
+                        <span class="tag">Orbital Mech</span><span class="tag">Aerodynamics</span>
+                        <span class="tag">Thermodynamics</span><span class="tag">Propulsion</span>
+                        <span class="tag">Calc III / Diff Eq</span>
+                    </div>
+                </section>
+            </div>
+        </div>
 
         <section data-aos="fade-up">
-            <h2>Relevant Coursework</h2>
-            <div class="d-flex flex-wrap">
-                <span class="course-tag mono">Orbital Mechanics</span>
-                <span class="course-tag mono">Aerodynamics</span>
-                <span class="course-tag mono">Thermodynamics</span>
-                <span class="course-tag mono">Flight Dynamics</span>
-                <span class="course-tag mono">Solid Mechanics</span>
-                <span class="course-tag mono">Propulsion Systems</span>
-                <span class="course-tag mono">Calculus III & Diff Eq</span>
-            </div>
-        </section>
-
-        <section data-aos="fade-up">
-            <h2>Contact Me</h2>
+            <h2>05 // CONTACT</h2>
             <div class="row">
                 <div class="col-md-7">
                     <form action="https://formspree.io/f/mnjajznd" method="POST">
-                        <div class="mb-3">
-                            <input type="text" name="name" class="form-control" placeholder="Name" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" name="email" class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="mb-3">
-                            <textarea name="message" class="form-control" rows="5" placeholder="Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">SEND MESSAGE</button>
+                        <input type="text" name="name" class="form-control mb-3" placeholder="NAME" required>
+                        <input type="email" name="email" class="form-control mb-3" placeholder="EMAIL" required>
+                        <textarea name="message" class="form-control mb-3" rows="4" placeholder="MESSAGE" required></textarea>
+                        <button type="submit" class="btn-resume w-100">SEND_TRANSMISSION</button>
                     </form>
-                </div>
-                <div class="col-md-5 mt-4 mt-md-0">
-                    <p class="text-secondary-custom">Feel free to reach out for internship opportunities, technical collaborations, or military-related inquiries.</p>
-                    <p class="fw-bold mb-0 mono">Email</p>
-                    <p class="text-secondary-custom">rikrajgiri@gmail.com</p>
                 </div>
             </div>
         </section>
 
         <footer>
-            © 2025 Rik Raj Giri · Bridging Hands-On Maintenance with Aerospace Innovation
+            <div class="d-flex justify-content-between">
+                <span>© 2025 RIK RAJ GIRI</span>
+                <span>DOC_ID: AERO-2025-15U</span>
+            </div>
         </footer>
     </div>
 
@@ -208,18 +190,11 @@
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });
-        
         new Typewriter('#typewriter', {
-            strings: [
-                'SJSU Aerospace Engineering Student', 
-                'U.S. National Guard: Chinook Helicopter Repairer'
-            ],
-            autoStart: true, loop: true, delay: 50, deleteSpeed: 30
+            strings: ['SJSU Aerospace Engineering Student', 'U.S. National Guard: Chinook Helicopter Repairer'],
+            autoStart: true, loop: true, delay: 50
         });
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
+        function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
     </script>
 </body>
 </html>
